@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/script.js"></script>
+	<title>task_4</title>
+</head>
+
+<body>
+	<div class="head__container">
+		<div class="head__title">
+			<h1>Задача 4</h1>
+		</div>
+		<div class="head__subtitle">
+			<h6>Розробити клас Baner</h6>
+		</div>
+		<script>
+			function getRandomNumber(minValue, maxValue) {
+				return minValue + Math.floor(Math.random() * (maxValue - minValue + 1))
+			}
+			
+			class Baner {
+				constructor() {
+					this.bannersArr = [
+						{
+							imageSrc: `../task__4/img/banner_1.jpg`,
+							href: 'https://www.google.com/'
+						},
+						{
+							imageSrc: `../task__4/img/banner_2.jpg`,
+							href: 'https://www.google.com/'
+						},
+						{
+							imageSrc: `../task__4/img/banner_3.jpg`,
+							href: 'https://www.google.com/'
+						},
+					]
+				}
+				random() {
+					let randomNumber = getRandomNumber(0, this.bannersArr.length-1)
+					let bannerImage = this.bannersArr[randomNumber].imageSrc
+					let bannerHref =this.bannersArr[randomNumber].href
+					return {
+						bannerImage,
+						bannerHref
+					}
+				}
+				bannerOutput(){
+					let {
+						bannerImage, bannerHref
+					} = this.random()
+					document.write(`
+				<div>
+						<a href="${bannerHref}" class="banner">
+						<img class="banner__image" src="${bannerImage}" alt="">
+						<a>
+				</div>
+				`)
+				}
+			}
+			
+			let test = new Baner 
+			test.bannerOutput()
+		</script>
+	</div>
+</body>
+
+</html>
